@@ -1,7 +1,11 @@
 # Streaming-Crypto-Analysis
 
 ## Data Descryption
-We will get streaming data with Binance API on WebSocket.
+We will get streaming data with Binance API on Stream WebSocket.
+
+Basic endpoint for API:
+
+```wss://stream.binance.com:9443 или wss://stream.binance.com:443```
 
 Input data is a cryptocurrency stock quotes.
 
@@ -22,7 +26,11 @@ For a streaming system with financial data, it is extremely important to avoid d
 For a real-time data processing streaming system, the delay should be minimal (less than a second). This is necessary to make decisions based on the most up-to-date data from the Binance exchange.
 
 ## Описание данных
-Мы будем получать данных при помощи Binace API, работающем на Websocket.
+Мы будем получать данных при помощи Binace API, работающем на Stream Websocket.
+
+Базовая конечная точка для API:
+
+```wss://stream.binance.com:9443 or wss://stream.binance.com:443```
 
 Входные данные это котировки криптовалюты.
 
