@@ -19,7 +19,7 @@ def delivery_report(err, msg):
     if err is not None:
         print(f"Ошибка доставки: {err}")
     else:
-        print(f"Сообщение доставлено: {msg.topic()} [{msg.partition()}] @ {msg.offset()}")
+        print(f"Сообщение доставлено: {msg.topic()} {msg.key()} [{msg.partition()}] @ {msg.offset()}")
 
 
 # Инициализация Kafka продюсера
@@ -40,7 +40,7 @@ except redis.exceptions.RedisError as e:
 
 
 # Функция для подключения к Binance WebSocket API и обработки данных свечей
-async def stream_kline(symbol='btcusdt', interval='1m'):
+async def stream_kline(symbol='btcusdt', interval='1s'):
     uri = f"wss://stream.binance.com:9443/ws/{symbol}@kline_{interval}"
 
     async with websockets.connect(uri) as websocket:
@@ -77,6 +77,7 @@ async def stream_kline(symbol='btcusdt', interval='1m'):
                 # Отправляем данные в Kafka
                 producer.produce(
                     KAFKA_TOPIC,
+                    key=symbol,
                     value=json.dumps(kline_message),
                     callback=delivery_report
                 )
