@@ -1,0 +1,3 @@
+[submodule "pythonKafka"]
+	path = pythonKafka
+	url = https://github.com/Npudov/Streaming-Crypto-Analysis.git
