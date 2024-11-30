@@ -1,7 +1,0 @@
-confluent-kafka
-websockets
-redis
-apache-flink
-python-dotenv
-apache-beam
-ruamel.yaml
