@@ -19,11 +19,11 @@ import java.util.List;
 public class WebSocketController {
     private final KafkaConsumerService kafkaConsumerService;
     //private final SimpMessagingTemplate messagingTemplate;
-    private final HistoricalKafkaConsumerService historicalKafkaConsumerService;
+    //private final HistoricalKafkaConsumerService historicalKafkaConsumerService;
 
-    public WebSocketController(KafkaConsumerService kafkaConsumerService, HistoricalKafkaConsumerService historicalKafkaConsumerService) {
+    public WebSocketController(KafkaConsumerService kafkaConsumerService) {
         this.kafkaConsumerService = kafkaConsumerService;
-        this.historicalKafkaConsumerService = historicalKafkaConsumerService;
+        //this.historicalKafkaConsumerService = historicalKafkaConsumerService;
 
     }
 
@@ -47,10 +47,10 @@ public class WebSocketController {
      * Когда клиент подключается, он подписывается на /topic/initial-data.
      * Мы отсылаем ему все данные из кэша.
      */
-    @SubscribeMapping("/initial-data")
+    /*@SubscribeMapping("/initial-data")
     public void sendInitialData() {
         List<CryptoAggregatedData> cachedData = historicalKafkaConsumerService.getDataCache();
         // Отправляем данные на клиент
         kafkaConsumerService.getMessagingTemplate().convertAndSend("/topic/initial-data", cachedData);
-    }
+    }*/
 }
